@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Card from '../Card/Card';
 
 const Search = () => {
@@ -6,15 +6,18 @@ const Search = () => {
   const [pokemonData, setPokemonData] = useState({
     id: null,
     name: '',
+    color: '',
     image: '',
     type: '',
     moves: [],
     abilities: []
   });
+  const [cardDisplay, setCardDisplay] = useState('none');
 
   const getPokemon = async () => {
     let abilitiesArr = [];
     let movesArr = [];
+    let color;
 
     try {
       await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
@@ -24,6 +27,10 @@ const Search = () => {
             const ability = data.ability.name.charAt(0).toUpperCase() + data.ability.name.slice(1).replace('-', ' ');
             abilitiesArr.push(ability);
           });
+
+          fetch(response.species.url).then(res => res.json().then(res => {
+            color = res.color.name;
+          }));
 
           response.moves.forEach(item => {
             fetch(item.move.url).then(res => res.json()).then(res => {
@@ -35,6 +42,7 @@ const Search = () => {
               setPokemonData({
                 id: response.id,
                 name: response.name.charAt(0).toUpperCase() + response.name.slice(1),
+                color: color,
                 image: response.sprites.other.dream_world.front_default,
                 type: response.types[0].type.name.charAt(0).toUpperCase() + response.types[0].type.name.slice(1),
                 moves: movesArr,
@@ -55,6 +63,7 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getPokemon();
+    setCardDisplay('block');
   };
 
   return (
@@ -68,8 +77,7 @@ const Search = () => {
           />
         </label>
       </form>
-
-      <Card name={pokemonData.name} image={pokemonData.image} type={pokemonData.type} abilities={pokemonData.abilities} moves={pokemonData.moves} key={pokemonData.id} />
+      <Card display={cardDisplay} pokemon={pokemonData} />
     </>
   );
 }

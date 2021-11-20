@@ -1,3 +1,110 @@
 .card {
-    padding: 15px;
+    position: relative;
+    margin-top: 100px;
+    max-width: 300px;
+    
+    img {
+        display: block;
+        position: absolute;
+        top: -75px;
+        right: 5px;
+        width: 100px;
+    }                
+                
+    .content {
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f7f5f45e;
+
+        .type {
+            padding: 4px;
+            align-self: end;
+            border-radius: 4px;
+            color: #000;
+        }
+
+        h1 {
+            margin: 15px 0;
+        }
+
+        .movesWrapper {
+            display: flex;
+            flex-direction: column;
+
+            .btn {
+                width: 130px;
+                margin-top: 10px;
+                padding: 4px;
+                align-self: end;
+                border: none;
+                border-radius: 4px;
+            }
+        }
+
+        .abilitiesWrapper {
+            margin-bottom: 15px;
+
+            h2 {
+                margin: 15px 0;
+            }
+
+            .abilities {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+
+                .ability {
+                    margin-bottom: 5px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+
+    .modal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+       
+        .modal {
+            overflow: scroll;
+            overflow-x: hidden;
+            width: 70%;
+            max-height: calc(100vh - 150px);
+            margin: auto;
+            padding: 30px;
+            text-align: left;
+            background: linear-gradient(180deg, #EEEEEE 0%, #FFFFFF 100%);
+        }
+        
+        .btn-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            height: 20px;
+        }
+        
+        .close-pipe {
+            position: absolute;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .close-pipe1 {
+            transform: rotate(45deg);
+        }
+        
+        .close-pipe2 {
+            transform: rotate(135deg);
+        }
+    }
+    
 }
