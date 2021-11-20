@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Card from './components/Card/Card';
-import './App.css';
+import React from 'react';
+import './App.scss';
 import Search from './components/Search/Search';
 
 function App() {
 
   return (
-    <>
+    <div className="App">
       <Search />
-    </>
+    </div>
   );
 }
 
