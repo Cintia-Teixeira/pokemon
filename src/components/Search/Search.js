@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
+import './Search.scss';
 
 const Search = () => {
   const [pokemon, setPokemon] = useState('');
@@ -68,7 +69,7 @@ const Search = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label>
           <input
             type="text"

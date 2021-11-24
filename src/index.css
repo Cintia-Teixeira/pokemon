@@ -19,6 +19,6 @@ span {
   color: #404039;
 }
 
-.btn {
+.btn, input {
   font-family: 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
