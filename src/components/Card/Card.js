@@ -6,10 +6,11 @@ import { useState } from 'react/cjs/react.development';
 
 
 const Card = (props) => {
-    const { name, color, image, type, moves, abilities } = props.pokemon;
+    const { name, color, image, type, movesArr, abilitiesArr } = props.pokemon;
     const [modalDisplay, setModalDisplay] = useState('none')
 
-    const movesToBeShown = moves.filter((move, index) => index === 0 || index === 1);
+    
+    const movesToBeShown = movesArr.filter((move, index) => index === 0 || index === 1);
 
     const toggleModal = () => {
         if (modalDisplay === 'none') {
@@ -20,7 +21,7 @@ const Card = (props) => {
     }
 
     return (
-        <div className="card" style={{ display: props.display }}>
+        <div className="card">
             <img src={image} alt={name}></img>
             <div className="content" style={{ border: `solid 2px ${color}` }}>
                 <span className="type" style={{ background: color }}>{type}</span>
@@ -28,7 +29,7 @@ const Card = (props) => {
                 <section className="abilitiesWrapper">
                     <h2>Abilities</h2>
                     <div className="abilities">
-                        {abilities.map(ability => {
+                        {abilitiesArr.map(ability => {
                             return (
                                 <span className="ability" key={ability}>{ability}</span>
                             )
@@ -45,7 +46,7 @@ const Card = (props) => {
                             <span className="close-pipe close-pipe1">|</span>
                             <span className="close-pipe close-pipe2">|</span>
                         </div>
-                        <Moves moves={moves}></Moves>
+                        <Moves moves={movesArr}></Moves>
                     </div>
                 </div>
             </div>
